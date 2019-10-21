@@ -5,6 +5,8 @@ metadata:
   namespace: default
 spec:
   schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
       template:
@@ -16,5 +18,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - git clone https://github.com/alexec/gitops-workshop && kubectl apply -R -f gitops-workshop/poor-mans-gitops/apps
+                - git clone https://github.com/alexec/gitops-workshop && kubectl apply -R -f poor-mans-gitops/apps
           restartPolicy: Never
