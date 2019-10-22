@@ -38,5 +38,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - git clone https://github.com/alexec/gitops-workshop && kubectl apply -R --validate=false -f gitops-workshop/poor-mans-gitops/apps
+                - git clone https://github.com/alexec/gitops-workshop && find gitops-workshop/poor-mans-gitops/apps -type f | envsubst | kubectl apply -R --validate=false
           restartPolicy: Never
