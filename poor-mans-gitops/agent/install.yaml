@@ -35,9 +35,8 @@ spec:
             - name: main
               image: poor-mans-gitops:v1
               imagePullPolicy: IfNotPresent
-
               args:
                 - /bin/sh
                 - -c
-                - kubectl api-versions && git clone https://github.com/alexec/gitops-workshop && kubectl apply -R --validate=false -f gitops-workshop/poor-mans-gitops/apps
+                - git clone https://github.com/alexec/gitops-workshop && kubectl apply -R --validate=false -f gitops-workshop/poor-mans-gitops/apps
           restartPolicy: Never
