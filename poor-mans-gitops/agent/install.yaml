@@ -23,7 +23,7 @@ metadata:
   name: gitops-agent
   namespace: default
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/3 * * * *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
@@ -38,5 +38,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - kubectl api-versions && git clone https://github.com/alexec/gitops-workshop && kubectl apply -R -f gitops-workshop/poor-mans-gitops/apps
+                - kubectl api-versions && git clone https://github.com/alexec/gitops-workshop && kubectl apply -R -f --validate=false gitops-workshop/poor-mans-gitops/apps
           restartPolicy: Never
